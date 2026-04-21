@@ -5,9 +5,32 @@
 @layer base {
     html {
         scroll-behavior: smooth;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     body {
-        @apply bg-zinc-950 text-white;
+        @apply bg-zinc-950 text-zinc-200 overflow-x-hidden;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        @apply bg-zinc-950;
+    }
+    ::-webkit-scrollbar-thumb {
+        @apply bg-zinc-800 rounded-full border-[2px] border-solid border-zinc-950;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-nature-500;
+    }
+}
+
+@layer utilities {
+    .glass-nav {
+        @apply bg-black/60 backdrop-blur-lg border-b border-white/5 shadow-sm;
     }
 }
