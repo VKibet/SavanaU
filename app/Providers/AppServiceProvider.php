@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Use compiled manifest if it exists (production builds)
+        if (file_exists(public_path('build/manifest.json'))) {
+            Vite::useManifest(public_path('build/manifest.json'));
+        }
     }
 }
