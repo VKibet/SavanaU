@@ -8,4 +8,10 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+        hmr: process.env.VITE_HMR_HOST ? {
+            host: process.env.VITE_HMR_HOST,
+            protocol: 'wss',
+        } : undefined,
+    },
 });
